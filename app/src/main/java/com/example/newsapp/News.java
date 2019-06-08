@@ -17,7 +17,7 @@ public class News {
     /**
      * Constructs a new {@link News} object.
      *
-     * @param newsSection is the section name of the news article(.e.g Politics, Economy e.t.c).
+     * @param newsSection is the section name of the news article(i.e Politics, Economy e.t.c).
      * @param newsTitle   is the title of the news article.
      * @param time        is the date and time when the news article was released.
      * @param url         is the website URL to find more details about the news article.
