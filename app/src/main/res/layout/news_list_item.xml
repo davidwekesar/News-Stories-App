@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:maxLines="1"
         android:textSize="16sp"
         android:fontFamily="@font/roboto_slab_bold"
         tools:text="US news" />
@@ -21,6 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textSize="18sp"
         android:fontFamily="@font/roboto_slab_regular"
         tools:text="How tobacco industry donations cloud debates over cigarette controls" />
