@@ -49,6 +49,7 @@ public class QueryUtils {
         // stories
         List<News> newsStories = extractFeatureFromJson(jsonResponse);
 
+        // Return the list of {@link News} stories.
         return newsStories;
     }
 
@@ -129,7 +130,7 @@ public class QueryUtils {
     }
 
     /**
-     *Return an {@link List<News>} object by parsing the information
+     * Return an {@link List<News>} object by parsing the information
      * about the news stories from the input newsJSON.
      */
     private static List<News> extractFeatureFromJson(String newsJSON) {
@@ -146,7 +147,9 @@ public class QueryUtils {
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
+
             JSONObject newsResponse = baseJsonResponse.getJSONObject("response");
+
             JSONArray newsArray = newsResponse.getJSONArray("results");
 
             // For each news story in the newsArray, create a {@link News} object.
@@ -168,7 +171,7 @@ public class QueryUtils {
 
                 // Create a new {@link News} object with the newsSection, time, newsTitle
                 // and url from the JSON response.
-                News news = new News(newsSection, time, newsTitle, url);
+                News news = new News(newsSection, newsTitle, time, url);
 
                 // Add a new {@link News} story to the list of news stories.
                 newsStories.add(news);

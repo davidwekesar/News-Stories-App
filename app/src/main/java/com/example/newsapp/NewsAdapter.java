@@ -1,12 +1,14 @@
 package com.example.newsapp;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +21,8 @@ import java.util.Date;
  * to be displayed to the user.
  */
 public class NewsAdapter extends ArrayAdapter<News> {
+
+    private static final String LOG_TAG = NewsAdapter.class.getName();
 
     /**
      * Constructs a new {@link NewsAdapter}.
@@ -61,40 +65,62 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Display the Title of the current news in that TextView.
         newsTitleView.setText(newsTitle);
 
-        // Create a new Date object from the time of the news.
-        Date dateObject = new Date(currentNews.getTime());
+        // Get the original time from the News object.
+        String originalTime = currentNews.getTime();
+
+        // Split the original time string into two parts, based on the "T" and "Z" texts from the
+        // original time text of "2019-05-11T05:00:12Z"
+        String[] parts = originalTime.split("(T)|(Z)");
+        // The date string should be in the format "2019-05-11"
+        String date = parts[0];
+        // The time string should be in the format "05:00:12"
+        String time = parts[1];
+
+        // Change the date format from this "2019-05-11" format...
+        SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // ...to this format "Mar 10, 2010"
+        SimpleDateFormat ldyFormat = new SimpleDateFormat("LLL dd, yyyy");
+
+        // Format the date string into the format "Mar 10, 2010"
+        String outputDateStr = parseDate(date, ymdFormat, ldyFormat);
+        Log.i(LOG_TAG, "This is the  current date: " + outputDateStr);
 
         // Find the TextView with the view ID date.
         TextView dateView = listItemView.findViewById(R.id.date);
-        // Format the date string (i.e "Mar 6, 2010").
-        String formattedDate = formatDate(dateObject);
         // Display the date of the current news in that TextView.
-        dateView.setText(formattedDate);
+        dateView.setText(outputDateStr);
+
+        // Change the time format from this "05:00:12" format...
+        SimpleDateFormat hmsFormat = new SimpleDateFormat("hh:mm:ss");
+        // ...to this format "3.00 PM"
+        SimpleDateFormat hmaFormat = new SimpleDateFormat("h:mm a");
+
+        // Format the time string into the format "3.00 PM"
+        String outputTimeStr = parseDate(time, hmsFormat, hmaFormat);
+        Log.i(LOG_TAG, "This is the current time: " + outputTimeStr);
 
         // Find the TextView with the view ID time.
         TextView timeView = listItemView.findViewById(R.id.time);
-        // Format the time string (i.e "3.00PM")
-        String formattedTime = formatTime(dateObject);
         // Display the time of the current news in that TextView.
-        timeView.setText(formattedTime);
+        timeView.setText(outputTimeStr);
 
         // Return the list item view that is now showing the appropriate data.
         return listItemView;
     }
 
     /**
-     * @return the formatted date string (i.e. "Mar 6, 2010") from the Date object.
+     * Helper method to change the format of the time and date strings
      */
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-        return dateFormat.format(dateObject);
-    }
-
-    /**
-     * @return the formatted date string (i.e. "3.00PM") from the Date object.
-     */
-    private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
+    public static String parseDate(String inputDateString, SimpleDateFormat inputDateFormat,
+                                   SimpleDateFormat outputDateFormat) {
+        Date date;
+        String outputDateString = null;
+        try {
+            date = inputDateFormat.parse(inputDateString);
+            outputDateString = outputDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return outputDateString;
     }
 }

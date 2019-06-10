@@ -14,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:maxLines="1"
-        android:textSize="16sp"
         android:fontFamily="@font/roboto_slab_bold"
+        android:maxLines="1"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
         tools:text="US news" />
 
     <TextView
@@ -24,10 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:maxLines="2"
         android:ellipsize="end"
-        android:textSize="18sp"
         android:fontFamily="@font/roboto_slab_regular"
+        android:maxLines="2"
+        android:textColor="@color/primaryText"
+        android:textSize="18sp"
         tools:text="How tobacco industry donations cloud debates over cigarette controls" />
 
     <LinearLayout
@@ -39,24 +41,26 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
             android:fontFamily="@font/roboto_slab_light"
+            android:textColor="@color/secondaryText"
+            android:textSize="12sp"
             tools:text="Mar 6, 2010" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="3dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="3dp"
             android:layout_marginRight="8dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_marginBottom="3dp"
+            android:background="@color/dividerColor" />
 
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_light"
+            android:textColor="@color/secondaryText"
             android:textSize="12sp"
             tools:text="3.00PM" />
 
