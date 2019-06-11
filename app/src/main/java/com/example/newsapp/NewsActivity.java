@@ -23,7 +23,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     private static final String LOG_TAG = NewsActivity.class.getName();
 
     private static final String GUARDIAN_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=debates&api-key=test";
+            "http://content.guardianapis.com/search?q=us&api-key=test";
 
     /**
      * Constant value for the news loader ID.
