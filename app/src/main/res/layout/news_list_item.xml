@@ -63,7 +63,5 @@
             android:textColor="@color/secondaryText"
             android:textSize="12sp"
             tools:text="3.00PM" />
-
     </LinearLayout>
-
 </LinearLayout>

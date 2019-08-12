@@ -6,4 +6,32 @@
 
     <!-- Text to display in the list when there is no news story[CHAR LIMIT=NONE] -->
     <string name="no_news_stories">No news stories found.</string>
+
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">News Settings</string>
+
+    <!-- Strings for Topic Preference [CHAR LIMIT=30] -->
+    <string name="settings_topic_label">Topic</string>
+    <string name="settings_topic_key" translatable="false">q</string>
+    <string name="settings_topic_default" translatable="false">Debates</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default">@string/settings_order_by_most_recent_value</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_recent_label">Most Recent</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">newest</string>
+
+    <!-- Label for order-by oldest option [CHAR LIMIT=20]  -->
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+
+    <!-- Label for order-by relevance option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 </resources>
